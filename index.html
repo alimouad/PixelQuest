@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gamify Glass UI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./style/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #0f0f0f, #030303 70%);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Smooth scrolling for sidebar */
+    .sidebar-nav {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 221, 0, 0.3) rgba(255, 255, 255, 0.06);
+    }
+
+    .sidebar-nav::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar-nav::-webkit-scrollbar-thumb {
+      background: rgba(255, 221, 0, 0.3);
+      border-radius: 20px;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen text-[#F5F5F5] font-sans">
+
+  <!-- HEADER -->
+  <header class="p-3 bg-[#F5F5F5] text-black backdrop-blur-3xl border-b rounded-md border-[#F5F5F5]/20 shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center gap-6">
+
+      <a href="#" class="flex items-center gap-3">
+        <img class="w-12" src="./images/logo.png" alt="logo">
+        <span class="font-extrabold text-2xl">GamiFy</span>
+      </a>
+
+      <div class="relative max-w-lg flex-1">
+        <input type="text" placeholder="Search..."
+          class="w-full py-3 px-12 rounded-full bg-[#F5F5F5]/10  border-[#F5F5F5]/20 text-black placeholder-gray-400 focus:border-[#000] border-2 shadow-lg backdrop-blur-xl transition duration-300 outline-none" />
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+      </div>
+
+      <a href="#" class="p-2 px-4 flex items-center gap-3 bg-[#F5F5F5]/10 hover:bg-black hover:text-[#F5F5F5] rounded-full transition">
+        <i class="fa-solid fa-user-circle text-black text-2xl hover:text-[#F5F5F5]"></i>
+        <span class="hidden sm:inline font-medium">Profile</span>
+      </a>
+
+    </div>
+  </header>
+
+  <main class="flex">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 h-[calc(100vh-70px)] p-6 bg-[#F5F5F5]/5 backdrop-blur-2xl border-r border-[#F5F5F5]/20 sticky top-[70px] shadow-xl flex flex-col">
+
+      <nav class="flex-1 sidebar-nav overflow-y-auto">
+
+        <ul class="space-y-2 font-medium nav_links">
+
+          <li >
+            <a href="#"  data-cont=".features_section" class="flex active gap-3 items-center py-3 px-4 rounded-xl bg-[#F5F5F5] text-black font-semibold shadow-lg">
+              <i class="fa-solid fa-house"></i> Home
+            </a>
+          </li>
+
+          <li >
+            <a href="#" data-cont=".all_games_section" class="flex gap-3 items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition">
+              <i class="fa-solid fa-border-all"></i> All Games
+            </a>
+          </li>
+
+          <h3 class="text-xs uppercase text-[[#F5F5F5]] pt-6">Discover</h3>
+
+          <li>
+            <button class="dropdown-btn w-full flex justify-between items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition">
+              <span class="flex items-center gap-3"><i class="fa-solid fa-layer-group text-[#F5F5F5]"></i> Platforms</span>
+              <i class="fa-solid fa-chevron-down text-gray-400 dropdown-icon"></i>
+            </button>
+            <ul class="dropdown-menu ml-10 mt-1 text-sm hidden space-y-1 text-gray-300">
+              <li class="py-2 px-3 rounded-md hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] transition">PC</li>
+              <li class="py-2 px-3 rounded-md hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] transition">PlayStation 4</li>
+              <li class="py-2 px-3 rounded-md hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] transition">Xbox One</li>
+              <li class="py-2 px-3 rounded-md hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] transition">Android</li>
+            </ul>
+          </li>
+
+          <li>
+            <button class="dropdown-btn w-full flex justify-between items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition">
+              <span class="flex items-center gap-3"><i class="fa-solid fa-icons text-[#F5F5F5]"></i> Genres</span>
+              <i class="fa-solid fa-chevron-down text-gray-400 dropdown-icon"></i>
+            </button>
+            <ul class="dropdown-menu ml-10 mt-1 text-sm hidden space-y-1 text-gray-300">
+              <li class="py-2 px-3 hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] rounded-md">Action</li>
+              <li class="py-2 px-3 hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] rounded-md">Strategy</li>
+              <li class="py-2 px-3 hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] rounded-md">Shooter</li>
+              <li class="py-2 px-3 hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] rounded-md">Racing</li>
+              <li class="py-2 px-3 hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] rounded-md">Sports</li>
+              <li class="py-2 px-3 hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] rounded-md">Puzzle</li>
+            </ul>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <footer class="mt-6 pt-4 border-t border-[#F5F5F5]/20 text-center text-xs text-gray-300">
+        Built with ❤️<br>
+        © 2025 MOUAD EL ALLI
+      </footer>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <section class="flex-1 p-10 main_section bg-[#202024]">
+       
+       </section>
+
+  </main>
+
+
+<script src="./scripts/script.js"></script>
+</body>
+</html>
