@@ -21,19 +21,19 @@
         <span class="hidden ml-[-12px] sm:block text-lg font-bold lg:text-2xl ">GamiFy</span>
       </a>
 
-      <div class="relative max-w-lg flex-1">
-        <input type="text" placeholder="Search..."
-          class="w-full py-3 px-12 rounded-full bg-[#F5F5F5]/10  border-[#F5F5F5]/20 text-black placeholder-gray-400 focus:border-[#000] border-2 shadow-lg backdrop-blur-xl transition duration-300 outline-none" />
-        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-      </div>
+     
 
-      <a href="#" class="p-2 px-4 flex items-center gap-3 bg-[#F5F5F5]/10 hover:bg-black hover:text-[#F5F5F5] rounded-full transition">
+
+      <div class="flex likeGame">
+        <a href="#" class="p-2 px-4 flex items-center gap-3 bg-[#F5F5F5]/10 hover:bg-black hover:text-[#F5F5F5] rounded-full transition">
         <i class="fa-solid fa-user-circle text-black text-2xl hover:text-[#F5F5F5]"></i>
         <span class="hidden sm:inline font-medium">Profile</span>
       </a>
-      <button id="menuToggle" class="md:hidden block  z-50 bg-[#0a0a0a]/80 border border-[#F5F5F5]/20 backdrop-blur-md text-[#F5F5F5] p-3 rounded-lg shadow-lg">
-      <i class="fa-solid fa-bars text-white text-lg"></i>
-    </button>
+        <button id="menuToggle" class="md:hidden block  z-50 bg-[#0a0a0a]/80 border border-[#F5F5F5]/20 backdrop-blur-md text-[#F5F5F5] p-3 rounded-lg shadow-lg">
+        <i class="fa-solid fa-bars text-white text-lg"></i>
+      </button>
+      </div>
+ 
 
     </div>
   </header>
@@ -44,30 +44,28 @@
   <main class="flex">
 
     <!-- SIDEBAR -->
-    <aside class=" absolute sm:w-[30%] md:w-[20%] md:sticky top-[70px] left-0 z-30 h-[calc(100vh-70px)] p-6 border-[#2C2C2C] bg-[#0a0a0a]/60 backdrop-blur-md border-r border-[#F5F5F5]/20  shadow-xl flex flex-col">
+    <aside class=" absolute sm:w-[30%] md:w-[20%] md:sticky top-[70px] left-0 z-30 sm:max-h-max md:min-h-[calc(100vh-70px)] p-6 border-[#2C2C2C] bg-[#0a0a0a]/60 backdrop-blur-md border-r border-[#F5F5F5]/20  shadow-xl flex flex-col">
 
       <nav class="flex-1 sidebar-nav overflow-y-auto">
 
         <ul class="space-y-2 font-medium nav_links">
 
           <li >
-            <a href="#"  data-cont=".features_section" class="flex active gap-3 items-center py-3 px-4 rounded-xl bg-[#F5F5F5] text-black font-semibold shadow-lg">
+            <a href="#"  data-cont=".features_section" class="active flex  gap-3 items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition font-semibold shadow-lg">
               <i class="fa-solid fa-house"></i> Home
             </a>
           </li>
 
           <li >
-            <a href="#" data-cont=".all_games_section" class="flex gap-3 items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition">
+            <a href="#" data-cont=".all_games_section" class=" flex gap-3 items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition">
               <i class="fa-solid fa-border-all"></i> All Games
             </a>
           </li>
 
           <h3 class="text-xs uppercase text-[[#F5F5F5]] pt-6">Discover</h3>
-
-          <li  >
-            <button class=" w-full flex justify-between items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition">
-              <a href="#"  data-cont=".platforms_section" class="flex items-center gap-3"><i class="fa-solid fa-layer-group text-[#F5F5F5]"></i> Platforms</a>
-            
+              <li >
+            <a href="#" data-cont=".platforms_section" class=" flex gap-3 items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition">
+              <i class="fa-solid fa-layer-group "></i> Platforms</a>
           </li>
 
           <li>
@@ -89,7 +87,7 @@
 
       </nav>
 
-      <footer class="mt-6 pt-4 border-t border-[#F5F5F5]/20 text-center text-xs text-gray-300">
+      <footer class="hidden md:block mt-6 pt-4 border-t border-[#F5F5F5]/20 text-center text-xs text-gray-300">
         Built with ❤️<br>
         © 2025 MOUAD EL ALLI
       </footer>
@@ -98,10 +96,13 @@
 
     <!-- MAIN CONTENT -->
     <div class="bg"></div>
-    <section class="flex-1 p-10 main_section">
+    <section class="p-3 flex-1 md:p-10 main_section">
         
         <!-- home---Page--------------- -->
         <div class="features_section active section" id="features">
+          <div class="rounded-xl mb-[30px]">
+            <h1 class="text-bold text-center text-2xl">GAMIFY The Most Trending Games Platform</h1>
+          </div>
              <h1 class="text-2xl tracking-wide font-bold mb-6">Featured Games</h1>
 
             <div class="relative mb-10 rounded-2xl overflow-hidden shadow-2xl bg-[#F5F5F5]/10 backdrop-blur-2xl border border-[[#F5F5F5]]/20">
@@ -128,54 +129,60 @@
         <!-- all-games-page-------- -->
         <div class="all_games_section section">
             <h1 class="text-2xl tracking-wide font-bold mb-6">All Games</h1>
-            <!-- filter-section------- -->
-          <div class="flex flex-col md:flex-row justify-between mb-10 gap-y-4">
-                  <select class="Genre bg-white text-black border border-neutral-700 rounded-lg px-4 py-2 w-full md:w-[23%] outline-none">
-                      <option>Genre</option>
-                      <option>Action</option>
-                      <option>RPG</option>
-                      <option>Simulation</option>
-                      <option>Shooter</option>
-                      <option>Puzzle</option>
-                      <option>Sports</option>
-                      <option>Racing</option>
-                      <option>Adventure</option>
-                      <option>Strategy</option>
-                      <option>Indie</option>
-                      <option>Platformer</option>
-                      <option>Casual</option>
-                      <option>Arcade</option>
-                      <option>Educational</option>
-                      <option>Family</option>
-                      <option>Fighting</option>
-                      <option>Massively Multiplayer</option>
-                  </select>
-                  <select class="Platform bg-white text-black border border-neutral-700 rounded-lg px-4 py-2 w-full md:w-[23%] outline-none">
-                      <option>Platform</option>
-                      <option>PC</option>
-                      <option>macOS</option>
-                      <option>Linux</option>
-                      <option>Nintendo</option>
-                      <option>PS Vita</option>
-                      <option>PlayStation</option>
-                      <option>Xbox</option>
-                      <option>Wii U</option>
-                      <option>iOS</option>
-                      <option>Android</option>
-                  </select> <select class="Ratings bg-white text-black border border-neutral-700 rounded-lg px-4 py-2 w-full md:w-[23%] outline-none">
-                      <option>Ratings</option>
-                      <option>Ascendent</option>
-                      <option>Descendent</option>
-                  </select>
-                <button class="ResetFilters bg-gray-600 hover:bg-gray-500 rounded-lg px-4 py-2 text-sm md:w-1/4">Reset Filters</button>
+            <div class="flex-col flex md:flex-row gap-3 align-items-center ">
+               <div class="relative max-w-lg flex-1">
+                  <input type="text" placeholder="Search..."
+                    class="w-full py-3 px-12 rounded-full bg-[#F5F5F5]/10  border-[#F5F5F5]/20 text-white placeholder-gray-400 focus:border-[#fff] border-2 shadow-lg backdrop-blur-xl transition duration-300 outline-none" />
+                  <i class=" searchIcon fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
               </div>
+                <div class="sm:w-full flex flex-col md:flex-row justify-between mb-10 gap-y-4 w-full md:w-[700px] mx-auto">
+                    <select class="Genre bg-white text-black border border-neutral-700 rounded-lg px-4 py-2 w-full md:w-[25%] outline-none">
+                        <option>Genre</option>
+                        <option>Action</option>
+                        <option>RPG</option>
+                        <option>Simulation</option>
+                        <option>Shooter</option>
+                        <option>Puzzle</option>
+                        <option>Sports</option>
+                        <option>Racing</option>
+                        <option>Adventure</option>
+                        <option>Strategy</option>
+                        <option>Indie</option>
+                        <option>Platformer</option>
+                        <option>Casual</option>
+                        <option>Arcade</option>
+                        <option>Educational</option>
+                        <option>Family</option>
+                        <option>Fighting</option>
+                        <option>Massively Multiplayer</option>
+                    </select>
+                    <select class="Platform bg-white text-black border border-neutral-700 rounded-lg px-4 py-2 w-full md:w-[23%] outline-none">
+                        <option>Platform</option>
+                        <option>PC</option>
+                        <option>macOS</option>
+                        <option>Linux</option>
+                        <option>Nintendo</option>
+                        <option>PS Vita</option>
+                        <option>PlayStation</option>
+                        <option>Xbox</option>
+                        <option>Wii U</option>
+                        <option>iOS</option>
+                        <option>Android</option>
+                    </select> <select class="Ratings bg-white text-black border border-neutral-700 rounded-lg px-4 py-2 w-full md:w-[23%] outline-none">
+                        <option>Ratings</option>
+                        <option>Ascendent</option>
+                        <option>Descendent</option>
+                    </select>
+                  <button class="ResetFilters bg-gray-600 hover:bg-gray-500 rounded-lg px-4 py-2 text-sm md:w-1/4">Reset Filters</button>
+                </div>
+            </div>
+            <!-- filter-section------- -->
+          
           
         
         
             
             <div class="grid allGames-container">
-           
-
             </div>
             
 
@@ -221,19 +228,24 @@
         <!-- trending platforms---------- -->
 
         <div class="platforms_section section">
-              <h1 class="text-2xl tracking-wide font-bold mb-6">Trending Platforms</h1>
-
-            
+              <h1 class="text-2xl tracking-wide font-bold mb-6">Trending Platforms</h1> 
             <div class="grid all-platforms-container">
-           
-
             </div>
             
         </div>
-
+        <!-- genres_section--------- -->
         <div class="genres_section section">
 
         </div>
+
+        <!-- liked-section------  -- -->
+        <div class="liked-items section">
+           <h1 class="text-2xl tracking-wide font-bold mb-6">Liked Games</h1>
+            <div class="grid all-liked-container">
+            </div>
+        </div>
+
+
 
         <!-- spinner------------------ -->
           <div class="spinner hidden fixed inset-0 flex items-center justify-center backdrop-blur-sm bg-black/20 z-50">
