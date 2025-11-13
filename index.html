@@ -3,97 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gamify Glass UI</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Gamify Platform Game</title>
+ 
   <link rel="stylesheet" href="./style/global.css">
+  <link rel="stylesheet" href="./style/output.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <style>
-    body {
-      background: radial-gradient(circle at top, #0f0f0f, #030303 70%);
-      backdrop-filter: blur(10px);
-    }
-
-    /* Smooth scrolling for sidebar */
-    .sidebar-nav {
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255, 221, 0, 0.3) rgba(255, 255, 255, 0.06);
-    }
-
-    .sidebar-nav::-webkit-scrollbar {
-      width: 6px;
-    }
-    .sidebar-nav::-webkit-scrollbar-thumb {
-      background: rgba(255, 221, 0, 0.3);
-      border-radius: 20px;
-    }
-  </style>
 </head>
 
 <body class="min-h-screen text-[#F5F5F5] font-sans">
 
   <!-- HEADER -->
-  <header class="p-3 bg-[#F5F5F5] text-black backdrop-blur-3xl border-b rounded-md border-[#F5F5F5]/20 shadow-lg sticky top-0 z-50">
+  <header class="p-3 bg-[#F5F5F5] text-black  backdrop-blur-3xl border-b rounded-md border-[#F5F5F5]/20 shadow-lg sticky top-0 z-50">
     <div class="container mx-auto flex justify-between items-center gap-6">
 
       <a href="#" class="flex items-center gap-3">
         <img class="w-12" src="./images/logo.png" alt="logo">
-        <span class="font-extrabold text-2xl">GamiFy</span>
+        <span class="hidden ml-[-12px] sm:block text-lg font-bold lg:text-2xl ">GamiFy</span>
       </a>
 
-      <div class="relative max-w-lg flex-1">
-        <input type="text" placeholder="Search..."
-          class="w-full py-3 px-12 rounded-full bg-[#F5F5F5]/10  border-[#F5F5F5]/20 text-black placeholder-gray-400 focus:border-[#000] border-2 shadow-lg backdrop-blur-xl transition duration-300 outline-none" />
-        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-      </div>
+     
 
-      <a href="#" class="p-2 px-4 flex items-center gap-3 bg-[#F5F5F5]/10 hover:bg-black hover:text-[#F5F5F5] rounded-full transition">
+
+      <div class="flex likeGame">
+        <a href="#" class="p-2 px-4 flex items-center gap-3 bg-[#F5F5F5]/10 hover:bg-black hover:text-[#F5F5F5] rounded-full transition">
         <i class="fa-solid fa-user-circle text-black text-2xl hover:text-[#F5F5F5]"></i>
         <span class="hidden sm:inline font-medium">Profile</span>
       </a>
+        <button id="menuToggle" class="md:hidden block  z-50 bg-[#0a0a0a]/80 border border-[#F5F5F5]/20 backdrop-blur-md text-[#F5F5F5] p-3 rounded-lg shadow-lg">
+        <i class="fa-solid fa-bars text-white text-lg"></i>
+      </button>
+      </div>
+ 
 
     </div>
   </header>
 
+
+
+  <!-- main_content----------- -->
   <main class="flex">
 
     <!-- SIDEBAR -->
-    <aside class="w-64 h-[calc(100vh-70px)] p-6 bg-[#F5F5F5]/5 backdrop-blur-2xl border-r border-[#F5F5F5]/20 sticky top-[70px] shadow-xl flex flex-col">
+    <aside class=" absolute sm:w-[30%] md:w-[20%] md:sticky top-[70px] left-0 z-30 sm:max-h-max md:min-h-[calc(100vh-70px)] p-6 border-[#2C2C2C] bg-[#0a0a0a]/60 backdrop-blur-md border-r border-[#F5F5F5]/20  shadow-xl flex flex-col">
 
       <nav class="flex-1 sidebar-nav overflow-y-auto">
 
         <ul class="space-y-2 font-medium nav_links">
 
           <li >
-            <a href="#"  data-cont=".features_section" class="flex active gap-3 items-center py-3 px-4 rounded-xl bg-[#F5F5F5] text-black font-semibold shadow-lg">
+            <a href="#"  data-cont=".features_section" class="active flex  gap-3 items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition font-semibold shadow-lg">
               <i class="fa-solid fa-house"></i> Home
             </a>
           </li>
 
           <li >
-            <a href="#" data-cont=".all_games_section" class="flex gap-3 items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition">
+            <a href="#" data-cont=".all_games_section" class=" flex gap-3 items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition">
               <i class="fa-solid fa-border-all"></i> All Games
             </a>
           </li>
 
           <h3 class="text-xs uppercase text-[[#F5F5F5]] pt-6">Discover</h3>
-
-          <li>
-            <button class="dropdown-btn w-full flex justify-between items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition">
-              <span class="flex items-center gap-3"><i class="fa-solid fa-layer-group text-[#F5F5F5]"></i> Platforms</span>
-              <i class="fa-solid fa-chevron-down text-gray-400 dropdown-icon"></i>
-            </button>
-            <ul class="dropdown-menu ml-10 mt-1 text-sm hidden space-y-1 text-gray-300">
-              <li class="py-2 px-3 rounded-md hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] transition">PC</li>
-              <li class="py-2 px-3 rounded-md hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] transition">PlayStation 4</li>
-              <li class="py-2 px-3 rounded-md hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] transition">Xbox One</li>
-              <li class="py-2 px-3 rounded-md hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] transition">Android</li>
-            </ul>
+              <li >
+            <a href="#" data-cont=".platforms_section" class=" flex gap-3 items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition">
+              <i class="fa-solid fa-layer-group "></i> Platforms</a>
           </li>
 
           <li>
             <button class="dropdown-btn w-full flex justify-between items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition">
-              <span class="flex items-center gap-3"><i class="fa-solid fa-icons text-[#F5F5F5]"></i> Genres</span>
+              <a href="#"  data-cont=".genres_section" class="flex items-center gap-3"><i class="fa-solid fa-icons text-[#F5F5F5]"></i> Genres</a>
               <i class="fa-solid fa-chevron-down text-gray-400 dropdown-icon"></i>
             </button>
             <ul class="dropdown-menu ml-10 mt-1 text-sm hidden space-y-1 text-gray-300">
@@ -110,7 +87,7 @@
 
       </nav>
 
-      <footer class="mt-6 pt-4 border-t border-[#F5F5F5]/20 text-center text-xs text-gray-300">
+      <footer class="hidden md:block mt-6 pt-4 border-t border-[#F5F5F5]/20 text-center text-xs text-gray-300">
         Built with ❤️<br>
         © 2025 MOUAD EL ALLI
       </footer>
@@ -118,9 +95,172 @@
     </aside>
 
     <!-- MAIN CONTENT -->
-    <section class="flex-1 p-10 main_section bg-[#202024]">
-       
-       </section>
+    <div class="bg"></div>
+    <section class="p-3 flex-1 md:p-10 main_section">
+        
+        <!-- home---Page--------------- -->
+        <div class="features_section active section" id="features">
+          <div class="rounded-xl mb-[30px]">
+            <h1 class="text-bold text-center text-2xl">GAMIFY The Most Trending Games Platform</h1>
+          </div>
+             <h1 class="text-2xl tracking-wide font-bold mb-6">Featured Games</h1>
+
+            <div class="relative mb-10 rounded-2xl overflow-hidden shadow-2xl bg-[#F5F5F5]/10 backdrop-blur-2xl border border-[[#F5F5F5]]/20">
+                <img src="./images/gta-5-pictures-a13v9zf0xizyife4.jpg" class="w-full h-96 object-cover opacity-60">
+                <div class="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black via-black/40">
+                <h2 class="text-4xl font-extrabold">GTA FIVE</h2>
+                <p class="text-gray-300 max-w-lg mb-3">A brief and exciting featured highlight.</p>
+                <button class="bg-[#F5F5F5] text-black font-bold py-3 px-6 rounded-lg hover:bg-[[#F5F5F5]] transition shadow-xl">
+                    Get Now
+                </button>
+                </div>
+            </div>
+
+        <h2 class="text-2xl tracking-wide font-bold my-4 text-left">New Releases</h2>
+
+        <div class="grid realesed-games">
+
+        </div>
+
+  
+        </div>
+
+
+        <!-- all-games-page-------- -->
+        <div class="all_games_section section">
+            <h1 class="text-2xl tracking-wide font-bold mb-6">All Games</h1>
+            <div class="flex-col flex md:flex-row gap-3 align-items-center ">
+               <div class="relative max-w-lg flex-1">
+                  <input type="text" placeholder="Search..."
+                    class="w-full py-3 px-12 rounded-full bg-[#F5F5F5]/10  border-[#F5F5F5]/20 text-white placeholder-gray-400 focus:border-[#fff] border-2 shadow-lg backdrop-blur-xl transition duration-300 outline-none" />
+                  <i class=" searchIcon fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+              </div>
+                <div class="sm:w-full flex flex-col md:flex-row justify-between mb-10 gap-y-4 w-full md:w-[700px] mx-auto">
+                    <select class="Genre bg-white text-black border border-neutral-700 rounded-lg px-4 py-2 w-full md:w-[25%] outline-none">
+                        <option>Genre</option>
+                        <option>Action</option>
+                        <option>RPG</option>
+                        <option>Simulation</option>
+                        <option>Shooter</option>
+                        <option>Puzzle</option>
+                        <option>Sports</option>
+                        <option>Racing</option>
+                        <option>Adventure</option>
+                        <option>Strategy</option>
+                        <option>Indie</option>
+                        <option>Platformer</option>
+                        <option>Casual</option>
+                        <option>Arcade</option>
+                        <option>Educational</option>
+                        <option>Family</option>
+                        <option>Fighting</option>
+                        <option>Massively Multiplayer</option>
+                    </select>
+                    <select class="Platform bg-white text-black border border-neutral-700 rounded-lg px-4 py-2 w-full md:w-[23%] outline-none">
+                        <option>Platform</option>
+                        <option>PC</option>
+                        <option>macOS</option>
+                        <option>Linux</option>
+                        <option>Nintendo</option>
+                        <option>PS Vita</option>
+                        <option>PlayStation</option>
+                        <option>Xbox</option>
+                        <option>Wii U</option>
+                        <option>iOS</option>
+                        <option>Android</option>
+                    </select> <select class="Ratings bg-white text-black border border-neutral-700 rounded-lg px-4 py-2 w-full md:w-[23%] outline-none">
+                        <option>Ratings</option>
+                        <option>Ascendent</option>
+                        <option>Descendent</option>
+                    </select>
+                  <button class="ResetFilters bg-gray-600 hover:bg-gray-500 rounded-lg px-4 py-2 text-sm md:w-1/4">Reset Filters</button>
+                </div>
+            </div>
+            <!-- filter-section------- -->
+          
+          
+        
+        
+            
+            <div class="grid allGames-container">
+            </div>
+            
+
+
+
+            <!-- pagination------------- -->
+            <div class="flex items-center justify-between p-4 bg-gray-900 rounded-xl border border-gray-800 shadow-lg mt-5">
+    
+            <div class="hidden sm:block">
+                <p id="paginationInfo" class="text-sm text-gray-400"></p>
+            </div>
+
+            <nav class="flex items-center space-x-1" aria-label="Pagination">
+                
+                <button class="p-2 border border-gray-700 rounded-full text-gray-400 bg-gray-800 hover:bg-purple-700 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        aria-label="Previous Page">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+
+                <div class="flex space-x-1 mx-2 pagination">
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full text-gray-300 hover:bg-gray-700 transition-colors duration-200">1</button>
+                    
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full bg-purple-600 text-white font-bold shadow-lg shadow-purple-500/30 hover:bg-purple-700 transition-colors duration-200" 
+                            aria-current="page">
+                        2
+                    </button>
+
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full text-gray-300 hover:bg-gray-700 transition-colors duration-200">3</button>
+                    
+                    <span class="w-10 h-10 flex items-center justify-center text-gray-500">...</span>
+                </div>
+
+                <button class="p-2 border border-gray-700 rounded-full text-gray-400 bg-gray-800 hover:bg-purple-700 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        aria-label="Next Page">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </nav>
+            </div>
+        </div>
+
+
+
+        <!-- trending platforms---------- -->
+
+        <div class="platforms_section section">
+              <h1 class="text-2xl tracking-wide font-bold mb-6">Trending Platforms</h1> 
+            <div class="grid all-platforms-container">
+            </div>
+            
+        </div>
+        <!-- genres_section--------- -->
+        <div class="genres_section section">
+
+        </div>
+
+        <!-- liked-section------  -- -->
+        <div class="liked-items section">
+           <h1 class="text-2xl tracking-wide font-bold mb-6">Liked Games</h1>
+            <div class="grid all-liked-container">
+            </div>
+        </div>
+
+
+
+        <!-- spinner------------------ -->
+          <div class="spinner hidden fixed inset-0 flex items-center justify-center backdrop-blur-sm bg-black/20 z-50">
+            <div class="flex flex-col items-center gap-4">
+                <div class="relative w-14 h-14">
+                    <!-- Back Ring -->
+                    <div class="absolute inset-0 rounded-full border-[4px] border-white"></div>
+                    <div class="absolute inset-0 rounded-full border-[4px] border-white border-t-transparent animate-spin"></div>
+                </div>
+
+                <p class="text-white font-medium drop-shadow-md tracking-wide">Loading data…</p>
+            </div>
+        </div>
+
+      </section>
 
   </main>
 
