@@ -1,0 +1,8 @@
+let pagination = document.querySelectorAll('.pagination > button')
+
+pagination.forEach(pagi =>{
+    pagi.addEventListener('click', (e)=>{
+        targetNumber = e.target.innerText
+        fetchAllGames()
+    })
+})
