@@ -8,6 +8,14 @@ let spinner = document.querySelector('.spinner')
 let targetNumber = 1;
 
 
+
+const menuToggle = document.getElementById("menuToggle");
+const sidebar = document.getElementById("sidebar");
+
+menuToggle.addEventListener("click", () => {
+  sidebar.classList.toggle("hidden");
+});
+
 // switch between sections------------
 nav_links.forEach(link =>{
     link.addEventListener('click',(e)=>{
@@ -39,13 +47,6 @@ nav_links.forEach(link =>{
       });
     });
 
-const menuToggle = document.getElementById("menuToggle");
-const sidebar = document.getElementById("sidebar");
-
-menuToggle.addEventListener("click", () => {
-  sidebar.classList.toggle("-translate-x-full");
-  console.log('test')
-});
 
 
 
@@ -53,7 +54,7 @@ menuToggle.addEventListener("click", () => {
 async function fetchData() {
     spinner.classList.remove('hidden');
     try {
-        const response = await fetch(' http://16.16.171.104:3000/api/games');
+        const response = await fetch(' https://debuggers-games-api.duckdns.org/api/games');
           
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -121,7 +122,7 @@ async function fetchAllGames(page = 1) {
     spinner.classList.remove('hidden'); // show loader
     
     try {
-        const response = await fetch(`http://16.16.171.104:3000/api/games?page=${page}&limit=${limit}`);
+        const response = await fetch(`https://debuggers-games-api.duckdns.org/api/games?page=${page}&limit=${limit}`);
         const data = await response.json();
 
         const totalGames = data.total || 0;
@@ -337,34 +338,50 @@ createModal();
 // fetch paltforms-----------
 let arrImages = ['./images/android.jpg','./images/ios.jpeg','./images/macos.jpg','./images/pc.png','./images/playstation2.png','./images/Playstation-4.webp','./images/psp.jpg','./images/xbox.png','./images/playstation5.jpg']
 
-function createBox(){
-    for(let i = 0; i< arrImages.length; i++){
+function createBox() {
+    for (let i = 0; i < arrImages.length; i++) {
+        const img = arrImages[i];
+        const title = img.slice(9, -4).toUpperCase();
+
         const card = document.createElement("div");
         card.className = `
-            relative bg-[#111] text-[#F5F5F5] rounded-2xl overflow-hidden shadow-xl 
-            hover:shadow-[#000]/80 hover:-translate-y-2 transition-all duration-500 
-            w-[280px] h-[340px] flex flex-col justify-end
+            relative rounded-2xl overflow-hidden shadow-2xl group
+            w-[280px] h-[340px] bg-[#0a0a0a]/60 backdrop-blur-xl
+            border border-white/10 transition-all duration-500
+            hover:scale-[1.04] hover:shadow-purple-500/40 cursor-pointer
         `;
 
         card.innerHTML = `
             <!-- Background Image -->
             <div class="absolute inset-0">
-            <img src="${arrImages[i]}" alt="${arrImages[i].slice(3,6)}" class="w-full h-full object-cover opacity-80">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#000]/90 via-[#000]/40 to-transparent"></div>
+                <img src="${img}" 
+                     alt="${title}" 
+                     class="w-full h-full object-cover opacity-70 group-hover:opacity-90 
+                     transition-all duration-500 group-hover:scale-110" />
+
+                <!-- Gradient Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t 
+                    from-black/90 via-black/40 to-transparent"></div>
             </div>
 
             <!-- Content -->
-            <div class="absolute top-[50%] left-14 p-4 z-10">
-            <h3 class="text-xl text-center text-white font-bold mb-1">${arrImages[i].slice(9,-4).toUpperCase()}</h3>
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-center z-20 px-4">
+                <h3 class="text-lg font-semibold tracking-wide text-white drop-shadow-xl
+                    transition-all duration-300 group-hover:text-purple-300">
+                    ${title}
+                </h3>
 
+                <div class="mt-2 w-10 h-[3px] bg-purple-400/70 mx-auto rounded-full
+                    opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
             </div>
         `;
 
-        allPlatforms.appendChild(card)
+        allPlatforms.appendChild(card);
     }
 }
 
-createBox()
+createBox();
+
 
 
 
@@ -376,7 +393,7 @@ const ratingSelect = document.querySelector(".Ratings");
 const resetButton = document.querySelector(".ResetFilters");
 
 async function fetchAllGamesFilter(page = 1, genre = "", platform = "", ordering = "") {
-  let url = `http://16.16.171.104:3000/api/games?page=${page}&limit=${limit}`;
+  let url = `https://debuggers-games-api.duckdns.org/api/games?page=${page}&limit=${limit}`;
 
   if (genre && genre !== "Genre") url += `&genre=${genre.toLowerCase()}`;
   if (platform && platform !== "Platform") url += `&platform=${encodeURIComponent(platform)}`;
@@ -472,7 +489,7 @@ const loadDataFromLocal = () =>{
 
 // show liked games--------
 
-document.querySelector('.likeGame').addEventListener('click',()=>{
+document.querySelector('.likeGame .profile').addEventListener('click',()=>{
   nav_links.forEach(item =>{
         item.classList.remove('active')
   })
@@ -485,3 +502,35 @@ document.querySelector('.likeGame').addEventListener('click',()=>{
 })
 
 loadDataFromLocal()
+
+
+const searchInput = document.querySelector('.searchInput');
+let searchTimeout;
+
+searchInput.addEventListener('input', () => {
+    clearTimeout(searchTimeout);
+
+    searchTimeout = setTimeout(async () => {
+        const target = searchInput.value.trim();
+        let url = `https://debuggers-games-api.duckdns.org/api/games`;
+
+        if (target !== "") {
+            url += `?search=${encodeURIComponent(target.toLowerCase())}`;
+        }
+        spinner.classList.remove('hidden');
+
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+
+            allGames.innerHTML = "";
+            data.results.forEach(game => generateAllGames(game));
+
+        } catch (err) {
+            console.error("Error searching games:", err);
+        } finally {
+            setTimeout(() => spinner.classList.add('hidden'), 500);
+        }
+
+    }, 400); // debounce
+});
