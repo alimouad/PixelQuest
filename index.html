@@ -13,7 +13,7 @@
 <body class="min-h-screen text-[#F5F5F5] font-sans">
 
   <!-- HEADER -->
-  <header class="p-3 bg-[#F5F5F5] text-black  backdrop-blur-3xl border-b rounded-md border-[#F5F5F5]/20 shadow-lg sticky top-0 z-50">
+  <header class="p-3 bg-[#F5F5F5] w-full text-black  backdrop-blur-3xl border-b rounded-md border-[#F5F5F5]/20 shadow-lg sticky top-0 z-50">
     <div class="container mx-auto flex justify-between items-center gap-6">
 
       <a href="#" class="flex items-center gap-3">
@@ -24,14 +24,17 @@
      
 
 
-      <div class="flex likeGame">
-        <a href="#" class="p-2 px-4 flex items-center gap-3 bg-[#F5F5F5]/10 hover:bg-black hover:text-[#F5F5F5] rounded-full transition">
-        <i class="fa-solid fa-user-circle text-black text-2xl hover:text-[#F5F5F5]"></i>
-        <span class="hidden sm:inline font-medium">Profile</span>
-      </a>
+      <div class="flex likeGame gap-4">
+
+        <a href="#" class=" profile p-2 px-4 flex items-center gap-3 bg-[#F5F5F5]/10 hover:bg-black hover:text-[#F5F5F5] rounded-full transition">
+            <i class="fa-solid fa-user-circle text-black text-2xl hover:text-[#F5F5F5]"></i>
+            <span class="hidden md:inline font-medium">Profile</span>
+        </a>
+
         <button id="menuToggle" class="md:hidden block  z-50 bg-[#0a0a0a]/80 border border-[#F5F5F5]/20 backdrop-blur-md text-[#F5F5F5] p-3 rounded-lg shadow-lg">
-        <i class="fa-solid fa-bars text-white text-lg"></i>
+            <i class="fa-solid fa-bars text-white text-lg"></i>
       </button>
+
       </div>
  
 
@@ -44,7 +47,7 @@
   <main class="flex">
 
     <!-- SIDEBAR -->
-    <aside class=" absolute sm:w-[30%] md:w-[20%] md:sticky top-[70px] left-0 z-30 sm:max-h-max md:min-h-[calc(100vh-70px)] p-6 border-[#2C2C2C] bg-[#0a0a0a]/60 backdrop-blur-md border-r border-[#F5F5F5]/20  shadow-xl flex flex-col">
+    <aside id="sidebar" class="hidden absolute sm:w-[30%] md:w-[20%] md:flex md:sticky top-[70px] left-0 z-30 sm:max-h-max md:min-h-[calc(100vh-70px)] p-6 border-[#2C2C2C] bg-[#0a0a0a]/60 backdrop-blur-md border-r border-[#F5F5F5]/20  shadow-xl  flex-col">
 
       <nav class="flex-1 sidebar-nav overflow-y-auto">
 
@@ -68,21 +71,6 @@
               <i class="fa-solid fa-layer-group "></i> Platforms</a>
           </li>
 
-          <li>
-            <button class="dropdown-btn w-full flex justify-between items-center py-3 px-4 rounded-xl hover:bg-[#F5F5F5]/20 transition">
-              <a href="#"  data-cont=".genres_section" class="flex items-center gap-3"><i class="fa-solid fa-icons text-[#F5F5F5]"></i> Genres</a>
-              <i class="fa-solid fa-chevron-down text-gray-400 dropdown-icon"></i>
-            </button>
-            <ul class="dropdown-menu ml-10 mt-1 text-sm hidden space-y-1 text-gray-300">
-              <li class="py-2 px-3 hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] rounded-md">Action</li>
-              <li class="py-2 px-3 hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] rounded-md">Strategy</li>
-              <li class="py-2 px-3 hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] rounded-md">Shooter</li>
-              <li class="py-2 px-3 hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] rounded-md">Racing</li>
-              <li class="py-2 px-3 hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] rounded-md">Sports</li>
-              <li class="py-2 px-3 hover:bg-[#F5F5F5]/10 hover:text-[#F5F5F5] rounded-md">Puzzle</li>
-            </ul>
-          </li>
-
         </ul>
 
       </nav>
@@ -100,7 +88,7 @@
         
         <!-- home---Page--------------- -->
         <div class="features_section active section" id="features">
-          <div class="rounded-xl mb-[30px]">
+          <div class="rounded-xl mb-[40px]">
             <h1 class="text-bold text-center text-2xl">GAMIFY The Most Trending Games Platform</h1>
           </div>
              <h1 class="text-2xl tracking-wide font-bold mb-6">Featured Games</h1>
@@ -132,10 +120,10 @@
             <div class="flex-col flex md:flex-row gap-3 align-items-center ">
                <div class="relative max-w-lg flex-1">
                   <input type="text" placeholder="Search..."
-                    class="w-full py-3 px-12 rounded-full bg-[#F5F5F5]/10  border-[#F5F5F5]/20 text-white placeholder-gray-400 focus:border-[#fff] border-2 shadow-lg backdrop-blur-xl transition duration-300 outline-none" />
-                  <i class=" searchIcon fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    class="searchInput sm:w-[80%] py-3 px-12 rounded-full bg-[#F5F5F5]/10  border-[#F5F5F5]/20 text-white placeholder-gray-400 focus:border-[#fff] border-2 shadow-lg backdrop-blur-xl transition duration-300 outline-none" />
+                  <i class=" searchIcon fa-solid fa-magnifying-glass absolute left-4 top-[32px] -translate-y-1/2 text-gray-400"></i>
               </div>
-                <div class="sm:w-full flex flex-col md:flex-row justify-between mb-10 gap-y-4 w-full md:w-[700px] mx-auto">
+                <div class="sm:w-[80%] flex flex-col md:flex-row justify-between mb-10 gap-y-4 md:w-[700px] mx-auto">
                     <select class="Genre bg-white text-black border border-neutral-700 rounded-lg px-4 py-2 w-full md:w-[25%] outline-none">
                         <option>Genre</option>
                         <option>Action</option>
@@ -233,10 +221,6 @@
             </div>
             
         </div>
-        <!-- genres_section--------- -->
-        <div class="genres_section section">
-
-        </div>
 
         <!-- liked-section------  -- -->
         <div class="liked-items section">
@@ -255,7 +239,6 @@
                     <div class="absolute inset-0 rounded-full border-[4px] border-white"></div>
                     <div class="absolute inset-0 rounded-full border-[4px] border-white border-t-transparent animate-spin"></div>
                 </div>
-
                 <p class="text-white font-medium drop-shadow-md tracking-wide">Loading data…</p>
             </div>
         </div>
